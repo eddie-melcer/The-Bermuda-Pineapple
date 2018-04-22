@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,8 @@ public class ShipMovement : MonoBehaviour {
     public float DangerThreshold = 2.0f;
     public float WarningThreshold = 3.0f;
     public float SlightWarningThreshold = 4.0f;
-    public float worldRadius = 5.0f;
+
+	public float worldRadius = 5.0f;
     public float shipSpawnRadius = 4.0f;
 
     // An enum for maintaining the different sound effects available
@@ -55,18 +56,19 @@ public class ShipMovement : MonoBehaviour {
         }
 
         // Wrap Ship Around
-        if((this.transform.position.x * this.transform.position.x + this.transform.position.y*this.transform.position.y) > worldRadius*worldRadius) {
+>>>>>>> 8f478c6511ebce5b4ecfde6fce168fd7e66a7ef8
+		if ((this.transform.position.x * this.transform.position.x + this.transform.position.y*this.transform.position.y) > worldRadius*worldRadius) {
             this.transform.position = new Vector2(this.transform.position.x * -0.99f, this.transform.position.y * -0.99f);
         }
 
         // Mine Sounds
         GameObject[] Mines = GameObject.FindGameObjectsWithTag("Mine");
-        if(Mines.Length > 0)
+        DistanceClass CurrentClass = DistanceClass.Safe;
+        if (Mines.Length > 0)
         {
             float mindist = Vector3.Distance(this.transform.position, Mines[0].transform.position);
-            DistanceClass CurrentClass = DistanceClass.Safe;
             GameObject closestMine = Mines[0];
-            for(int i = 0; i < Mines.Length; i++)
+            for (int i = 0; i < Mines.Length; i++)
             {
                 if (Vector3.Distance(this.transform.position, Mines[i].transform.position) < mindist)
                 {
@@ -81,47 +83,48 @@ public class ShipMovement : MonoBehaviour {
             else if (mindist <= DangerThreshold)
             {
                 CurrentClass = DistanceClass.Danger;
-            } else if (mindist <= WarningThreshold)
+            }
+            else if (mindist <= WarningThreshold)
             {
                 CurrentClass = DistanceClass.Warning;
-            } else if (mindist <= SlightWarningThreshold)
+            }
+            else if (mindist <= SlightWarningThreshold)
             {
                 CurrentClass = DistanceClass.SlightWarning;
             }
+        }
 
-            if (CurrentClass == DistanceClass.Safe)
+        if (CurrentClass == DistanceClass.Safe)
+        {
+            // stop playing everything
+            if (superDangerSource != null) SoundManager.instance.StopSFX(superDangerSource);
+            if (dangerSource != null) SoundManager.instance.StopSFX(dangerSource);
+            if (warningSource != null) SoundManager.instance.StopSFX(warningSource);
+            if (slightWarningSource != null) SoundManager.instance.StopSFX(slightWarningSource);
+        }
+        else
+        {
+            if(PreviousClass > CurrentClass)
             {
-                // stop playing everything
-                if (superDangerSource != null) SoundManager.instance.StopSFX(superDangerSource);
-                if (dangerSource != null) SoundManager.instance.StopSFX(dangerSource);
-                if (warningSource != null) SoundManager.instance.StopSFX(warningSource);
-                if (slightWarningSource != null) SoundManager.instance.StopSFX(slightWarningSource);
-            }
-            else
+                switch(CurrentClass)
+                {
+                    case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0); break;
+                    case DistanceClass.Danger: dangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning3, true, 0, null, 0, 0); break;
+                    case DistanceClass.Warning: warningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning2, true, 0, null, 0, 0); break;
+                    case DistanceClass.SlightWarning: slightWarningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning1, true, 0, null, 0, 0); break;
+                }
+            } else if (CurrentClass > PreviousClass)
             {
-                if(PreviousClass > CurrentClass)
+                switch (CurrentClass)
                 {
-                    switch(CurrentClass)
-                    {
-                        case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0, closestMine.transform.position); break;
-                        case DistanceClass.Danger: dangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning3, true, 0, null, 0, 0, closestMine.transform.position); break;
-                        case DistanceClass.Warning: warningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning2, true, 0, null, 0, 0, closestMine.transform.position); break;
-                        case DistanceClass.SlightWarning: slightWarningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning1, true, 0, null, 0, 0, closestMine.transform.position); break;
-                    }
-                } else if (CurrentClass > PreviousClass)
-                {
-                    switch (CurrentClass)
-                    {
-                        case DistanceClass.Danger: if (superDangerSource != null) SoundManager.instance.StopSFX(superDangerSource); break;
-                        case DistanceClass.Warning: if(dangerSource != null) SoundManager.instance.StopSFX(dangerSource); break;
-                        case DistanceClass.SlightWarning: if(warningSource != null) SoundManager.instance.StopSFX(warningSource); break;
-                    }
+                    case DistanceClass.Danger: if (superDangerSource != null) SoundManager.instance.StopSFX(superDangerSource); break;
+                    case DistanceClass.Warning: if(dangerSource != null) SoundManager.instance.StopSFX(dangerSource); break;
+                    case DistanceClass.SlightWarning: if(warningSource != null) SoundManager.instance.StopSFX(warningSource); break;
                 }
             }
-
-            PreviousClass = CurrentClass;
         }
-        
+
+        PreviousClass = CurrentClass;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

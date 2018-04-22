@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The-Bermuda-Pineapple", "The-Bermuda-Pineapple.csproj", "{F5D87133-2F91-0AA0-ACBC-7BC7517D3CA3}"
 EndProject
 Global
