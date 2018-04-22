@@ -96,6 +96,7 @@ public class ShipMovement : MonoBehaviour {
             {
                 if (Vector3.Distance(this.transform.position, Mines[i].transform.position) < mindist)
                 {
+                    closestMine = Mines[i];
                     mindist = Vector3.Distance(this.transform.position, Mines[i].transform.position);
                 }
             }

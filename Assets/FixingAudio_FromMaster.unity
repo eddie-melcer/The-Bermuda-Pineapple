@@ -177,7 +177,33 @@ Prefab:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: SuperDangerThreshold
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: DangerThreshold
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: WarningThreshold
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: SlightWarningThreshold
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 82451024725346654, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 81830223572255596, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &89287012 stripped
@@ -191,6 +217,42 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 89287011}
   m_Script: {fileID: 11500000, guid: bba80858b855e21478bb5d00c7bc6c9f, type: 3}
+--- !u!1 &451075783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 451075784}
+  - component: {fileID: 451075785}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &451075784
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 451075783}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2057844532}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!81 &451075785
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 451075783}
+  m_Enabled: 1
 --- !u!1 &460879609
 GameObject:
   m_ObjectHideFlags: 0
@@ -7383,6 +7445,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2057844532 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4346962154292126, guid: 359e1ee502753654aa34b11e5fd9c296,
+    type: 2}
+  m_PrefabInternal: {fileID: 89287011}
 --- !u!1 &2134911315
 GameObject:
   m_ObjectHideFlags: 0
@@ -7435,7 +7502,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -7509,7 +7576,7 @@ MonoBehaviour:
   minSFXVolume: 0
   maxSFXVolume: 1
   sfxState: 0
-  bgmVolume: 0.5
+  bgmVolume: 0.3
   minBGMVolume: 0
   maxBGMVolume: 0.1
   currentBGM: 0
