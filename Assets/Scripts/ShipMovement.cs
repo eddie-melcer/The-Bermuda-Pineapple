@@ -55,13 +55,9 @@ public class ShipMovement : MonoBehaviour {
         // Handle User Input
         MoveShip();
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetAxis("Horizontal") != 0)
         {
-            this.GetComponent<Rigidbody2D>().angularVelocity = AngularVelocity;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            this.GetComponent<Rigidbody2D>().angularVelocity = -AngularVelocity;
+            this.GetComponent<Rigidbody2D>().angularVelocity = -30 * Input.GetAxis("Horizontal");
         }
         else
         {
