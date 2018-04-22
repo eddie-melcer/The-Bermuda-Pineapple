@@ -24,9 +24,9 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-    public void resetShip(GameObject ship)
+    public void resetShip(GameObject ship, Collision collision)
     {
-        StartCoroutine(reset(ship));
+        StartCoroutine(reset(ship, collision));
     }
 
     public void WinReset(GameObject ship, GameObject pineapple)
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour {
 		    shipMovement.revive();
     }
 
-    public IEnumerator reset(GameObject ship)
+    public IEnumerator reset(GameObject ship,Collision collision)
     {
         // stop playing everything
         if (shipMovement.superDangerSource != null) SoundManager.instance.StopSFX(shipMovement.superDangerSource);
@@ -71,13 +71,14 @@ public class GameManager : MonoBehaviour {
             r.enabled = false;
         }
         //Death.Play();
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(8.0f);
         foreach (MeshRenderer r in rendererArray)
         {
             r.enabled = true;
         }
         ship.transform.position = generateRandomCoords(stuffRadius);
 		shipMovement.revive();
+        //Destroy(collision.gameObject);
     }
 
     void RandomMinePlacement(int number)

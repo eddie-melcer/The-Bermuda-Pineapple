@@ -16,6 +16,7 @@ public class ShipMovement : MonoBehaviour {
 	public float worldRadius = 5.0f;
     public float shipSpawnRadius = 4.0f;
     public bool  shipAlive;
+    public Vector3 tentableOffset = new Vector3(2,0,0);
 
 
     public AudioSource superDangerSource { get; protected set; }
@@ -59,6 +60,7 @@ public class ShipMovement : MonoBehaviour {
 
     private float rotAngle = 0;
     public float sensitivity = 1;
+    private Collision recentMine;
 
     // Update is called once per frame
     void Update() {
@@ -165,13 +167,17 @@ public class ShipMovement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision);
+        collision.gameObject.GetComponent<BoxCollider>().enabled = false;
         if (collision.gameObject.tag == "Mine")
         {
             shipAlive = false;
-            Destroy(collision.gameObject);
-            SoundManager.instance.PlaySFX(SoundEffect.Death);
-            manager.resetShip(this.gameObject);
+            //SoundManager.instance.PlaySFX(SoundEffect.Death);
+            collision.gameObject.transform.rotation = transform.rotation;
+            collision.gameObject.transform.position = transform.position;// + transform.rotation * tentableOffset;
+            collision.gameObject.GetComponent<Kraken>().tentacle.SetActive(true);
+            recentMine = collision;
+            manager.resetShip(this.gameObject,collision);
+            //Destroy(collision.gameObject);
 
         }
         else if (collision.gameObject.name == "Pineapple")
@@ -196,5 +202,9 @@ public class ShipMovement : MonoBehaviour {
 	public void revive()
 	{
 		shipAlive = true;
-	}
+        ShipMovement ship = FindObjectOfType<ShipMovement>();
+        GameObject shipMesh = ship.transform.Find("SpacePirateShip").gameObject;
+        shipMesh.transform.localPosition = Vector3.zero;
+        //Destroy(recentMine.gameObject);
+    }
 }
