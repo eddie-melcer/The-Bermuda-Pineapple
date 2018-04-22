@@ -38,7 +38,6 @@ public class ShipMovement : MonoBehaviour {
     void Awake () {
         manager = FindObjectOfType<GameManager>();
         rigidBody = GetComponentInChildren<Rigidbody>();
-        print(rigidBody);
     }
 
     void MoveShip()
@@ -52,9 +51,11 @@ public class ShipMovement : MonoBehaviour {
                 return;
             }
         }
-        print(this.transform.forward +" "+ Thrust);
         rigidBody.AddForce(this.transform.forward * Thrust);
     }
+
+    private float rotAngle = 0;
+    public float sensitivity = 1;
 
     // Update is called once per frame
     void Update() {
@@ -69,7 +70,9 @@ public class ShipMovement : MonoBehaviour {
 
 			int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
 
-			this.transform.eulerAngles = new Vector3(0, 0, heading);
+            rotAngle += x_input * sensitivity;
+
+            this.transform.eulerAngles = new Vector3(0, rotAngle, 0);
         }
         else
         {
@@ -77,7 +80,7 @@ public class ShipMovement : MonoBehaviour {
         }
 
         // Wrap Ship Around
-        if((this.transform.position.x * this.transform.position.x + this.transform.position.y*this.transform.position.y) > worldRadius*worldRadius) {
+        if((this.transform.position.x * this.transform.position.x + this.transform.position.z*this.transform.position.z) > worldRadius*worldRadius) {
             this.transform.position = new Vector2(this.transform.position.x * -0.99f, this.transform.position.y * -0.99f);
         }
 
