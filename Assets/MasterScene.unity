@@ -157,63 +157,7 @@ Prefab:
       propertyPath: Target
       value: 
       objectReference: {fileID: 542124586}
-    - target: {fileID: 198711903628052168, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: randomSeed
-      value: -300071225
-      objectReference: {fileID: 0}
-    - target: {fileID: 198711903628052168, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 198910522038518778, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1900736931
-      objectReference: {fileID: 0}
-    - target: {fileID: 198910522038518778, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: SuperDangerThreshold
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: DangerThreshold
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: WarningThreshold
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: SlightWarningThreshold
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 82451024725346654, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: Thrust
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 54842299707982702, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 81830223572255596, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &89287012 stripped
@@ -3867,11 +3811,6 @@ Prefab:
     - {fileID: 135915201452713688, guid: 66f51a52578b4fb4fa4d64bd27b9a01a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 66f51a52578b4fb4fa4d64bd27b9a01a, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &742006230 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4346962154292126, guid: 359e1ee502753654aa34b11e5fd9c296,
-    type: 2}
-  m_PrefabInternal: {fileID: 89287011}
 --- !u!1 &762830441
 GameObject:
   m_ObjectHideFlags: 0
@@ -7424,42 +7363,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1979503192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1979503193}
-  - component: {fileID: 1979503194}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1979503193
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1979503192}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 742006230}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!81 &1979503194
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1979503192}
-  m_Enabled: 1
 --- !u!1 &2134911315
 GameObject:
   m_ObjectHideFlags: 0
