@@ -157,6 +157,11 @@ Prefab:
       propertyPath: Target
       value: 
       objectReference: {fileID: 542124586}
+    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: Thrust
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
   m_IsPrefabParent: 0
@@ -7337,7 +7342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0f76ee6a56e004da4b0e5fae0e0ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberMines: 7
+  NumberMines: 50
   MineThreshold: 10
   Mine: {fileID: 460879609}
   Ship: {fileID: 89287012}
