@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+/*
     public Vector2 generateRandomCoords(float radius) {
         float x = Random.Range(-radius, radius);
         return new Vector2(x, (float)Mathf.Sqrt(radius*radius - x*x));
@@ -90,4 +91,19 @@ public class GameManager : MonoBehaviour {
         float x = Random.Range(-radius, radius);
         return new Vector3(x, (float)Mathf.Sqrt(radius*radius - x*x), 0);
     }
+*/
+
+    public Vector3 generateRandomCoords3D(float radius) {
+      Vector2 v2d = generateRandomCoords(radius);
+      return new Vector3(v2d.x,v2d.y,0);
+    }
+
+    public Vector2 generateRandomCoords(float radius) {
+        float x = Random.Range(-radius, radius);
+        float ydist = Mathf.Sqrt(radius*radius - x*x);
+        float y = Random.Range(-ydist,ydist);
+        Debug.Log(x+","+y);
+        return new Vector2(x,y);
+    }
+
 }
