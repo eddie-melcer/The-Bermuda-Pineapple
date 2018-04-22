@@ -7505,7 +7505,7 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 1988795a951b6b442bc7be5ce3a0d093, type: 3}
   sfxClips:
-  - {fileID: 8300000, guid: 576b4c2e28c7a984687d9379ae522a21, type: 3}
+  - {fileID: 8300000, guid: d1c8bf20b4e665542b1d36c441bc61d3, type: 3}
   - {fileID: 8300000, guid: 293ea245cf9b6bb4e914c19367f6fc66, type: 3}
   - {fileID: 8300000, guid: cfef1106f0818d24099f89103874d3dc, type: 3}
   - {fileID: 8300000, guid: 42351893b6f03b643918d8094a478dc7, type: 3}
