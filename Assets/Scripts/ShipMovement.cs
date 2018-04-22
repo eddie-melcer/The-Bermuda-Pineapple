@@ -72,10 +72,11 @@ public class ShipMovement : MonoBehaviour {
         // Mine Sounds
         GameObject[] Mines = GameObject.FindGameObjectsWithTag("Mine");
         DistanceClass CurrentClass = DistanceClass.Safe;
+        GameObject closestMine = null;
         if (Mines.Length > 0)
         {
             float mindist = Vector3.Distance(this.transform.position, Mines[0].transform.position);
-            GameObject closestMine = Mines[0];
+            closestMine = Mines[0];
             for (int i = 0; i < Mines.Length; i++)
             {
                 if (Vector3.Distance(this.transform.position, Mines[i].transform.position) < mindist)
@@ -116,10 +117,10 @@ public class ShipMovement : MonoBehaviour {
             {
                 switch(CurrentClass)
                 {
-                    case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0); break;
-                    case DistanceClass.Danger: dangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning3, true, 0, null, 0, 0); break;
-                    case DistanceClass.Warning: warningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning2, true, 0, null, 0, 0); break;
-                    case DistanceClass.SlightWarning: slightWarningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning1, true, 0, null, 0, 0); break;
+                    case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0, closestMine); break;
+                    case DistanceClass.Danger: dangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning3, true, 0, null, 0, 0, closestMine); break;
+                    case DistanceClass.Warning: warningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning2, true, 0, null, 0, 0, closestMine); break;
+                    case DistanceClass.SlightWarning: slightWarningSource = SoundManager.instance.PlaySFX(SoundEffect.Warning1, true, 0, null, 0, 0, closestMine); break;
                 }
             } else if (CurrentClass > PreviousClass)
             {
