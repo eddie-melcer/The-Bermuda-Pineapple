@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Pineapple.transform.position = generateRandomCoords(stuffRadius);
+        Pineapple.transform.position = generateRandomCoords(stuffRadius) + new Vector3(0, 1.5f, 0);
         RandomMinePlacement(NumberMines);
 	}
 	
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
         Win.Play();
         yield return new WaitForSeconds(2.0f);
         pineapple.SetActive(true);
-        pineapple.transform.position = generateRandomCoords(stuffRadius);
+        pineapple.transform.position = generateRandomCoords(stuffRadius) + new Vector3(0, 1.5f, 0);
         GameObject[] OldMines = GameObject.FindGameObjectsWithTag("Mine");
         foreach(GameObject OldMine in OldMines)
         {
