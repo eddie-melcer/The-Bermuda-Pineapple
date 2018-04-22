@@ -275,6 +275,11 @@ Prefab:
       propertyPath: m_TargetDisplay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20150924117723740, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
   m_IsPrefabParent: 0
@@ -7387,6 +7392,7 @@ MonoBehaviour:
   Win: {fileID: 762830442}
   stuffRadius: 80
   shipMovement: {fileID: 89287013}
+  WholeScene: {fileID: 1989396380}
 --- !u!4 &1202780935
 Transform:
   m_ObjectHideFlags: 0
@@ -10849,6 +10855,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!20 &1989396380 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20150924117723740, guid: 359e1ee502753654aa34b11e5fd9c296,
+    type: 2}
+  m_PrefabInternal: {fileID: 89287011}
 --- !u!1 &2134911315
 GameObject:
   m_ObjectHideFlags: 0

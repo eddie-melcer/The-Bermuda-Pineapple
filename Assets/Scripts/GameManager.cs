@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public ParticleSystem Win;
     public float stuffRadius = 4.5f;
     public ShipMovement shipMovement;
+    public Camera WholeScene;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
         {
           Display.displays[1].Activate();
         }
+
         Pineapple.transform.position = generateRandomCoords(stuffRadius) + new Vector3(0, 1.5f, 0);
         RandomMinePlacement(NumberMines);
 	}
