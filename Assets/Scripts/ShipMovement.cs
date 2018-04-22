@@ -17,6 +17,12 @@ public class ShipMovement : MonoBehaviour {
     public float shipSpawnRadius = 4.0f;
     public bool  shipAlive;
     public Vector3 tentableOffset = new Vector3(2,0,0);
+    public Camera shipCam;
+    public Vector3 camOffset = new Vector3(0, -17f, -30f);
+    [Range(0.9f,1)]
+    public float camDelay = 0.97f;
+
+    protected Vector3 camPos;
 
 
     public AudioSource superDangerSource { get; protected set; }
@@ -65,7 +71,13 @@ public class ShipMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if(shipAlive) {
+        camPos = Vector3.Lerp(camPos, transform.position + camOffset, camDelay);
+        shipCam.transform.position = camPos;
+        shipCam.transform.LookAt(transform);
+
+        if (shipAlive) {
+            
+
             // Handle User Input
             MoveShip();
 
