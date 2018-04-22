@@ -202,6 +202,7 @@ public class SoundManager : MonoBehaviour
         {
             audio = target.AddComponent<AudioSource>();
             audio.spatialBlend = 1;
+            audio.rolloffMode = AudioRolloffMode.Linear;
         }
 
         // Set the clip of our AudioSource to the clip passed in as a parameter.
