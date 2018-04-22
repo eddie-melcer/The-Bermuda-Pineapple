@@ -92,11 +92,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public Vector3 generateRandomCoords(float radius) {
+    public Vector3 generateRandomCoords(float radius,float y = 0) {
         float x = Random.Range(-radius, radius);
         float zDist = Mathf.Sqrt(radius * radius - x * x);
         float z = Random.Range(-zDist, zDist);
-        return new Vector3(x, 0, z);
+        return new Vector3(x, y, z);
     }
 
 }
