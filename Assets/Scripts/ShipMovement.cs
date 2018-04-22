@@ -15,6 +15,8 @@ public class ShipMovement : MonoBehaviour {
     public float SlightWarningThreshold = 4.0f;
 	public float worldRadius = 5.0f;
     public float shipSpawnRadius = 4.0f;
+    public bool  shipAlive;
+
 
     public AudioSource superDangerSource { get; protected set; }
     public AudioSource dangerSource { get; protected set; }
@@ -38,6 +40,7 @@ public class ShipMovement : MonoBehaviour {
     void Awake () {
         manager = FindObjectOfType<GameManager>();
         rigidBody = GetComponentInChildren<Rigidbody>();
+        shipAlive = true;
     }
 
     void MoveShip()
@@ -59,25 +62,33 @@ public class ShipMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        // Handle User Input
-        MoveShip();
 
-        if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
-        {
-            //rigidBody.angularVelocity = -30 * Input.GetAxis("Horizontal");
-            float x_input = Input.GetAxis("Horizontal");
-			float y_input = Input.GetAxis("Vertical");
+        if(shipAlive) {
+            // Handle User Input
+            MoveShip();
 
-			int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
+            if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
+            {
+                //rigidBody.angularVelocity = -30 * Input.GetAxis("Horizontal");
+                float x_input = Input.GetAxis("Horizontal");
+                float y_input = Input.GetAxis("Vertical");
 
-            rotAngle += x_input * sensitivity;
+                int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
 
-            this.transform.eulerAngles = new Vector3(0, rotAngle, 0);
+                rotAngle += x_input * sensitivity;
+
+                this.transform.eulerAngles = new Vector3(0, rotAngle, 0);
+            }
+            else
+            {
+                rigidBody.angularVelocity = Vector3.zero;
+            }
         }
-        else
-        {
+        else {
+            rigidBody.velocity = Vector3.zero;
             rigidBody.angularVelocity = Vector3.zero;
         }
+        
 
         // Wrap Ship Around
         if((this.transform.position.x * this.transform.position.x + this.transform.position.z*this.transform.position.z) > worldRadius*worldRadius) {
@@ -96,6 +107,7 @@ public class ShipMovement : MonoBehaviour {
             {
                 if (Vector3.Distance(this.transform.position, Mines[i].transform.position) < mindist)
                 {
+                    closestMine = Mines[i];
                     mindist = Vector3.Distance(this.transform.position, Mines[i].transform.position);
                 }
             }
@@ -156,12 +168,15 @@ public class ShipMovement : MonoBehaviour {
         print(collision);
         if (collision.gameObject.tag == "Mine")
         {
+            shipAlive = false;
             Destroy(collision.gameObject);
             SoundManager.instance.PlaySFX(SoundEffect.Death);
             manager.resetShip(this.gameObject);
+
         }
         else if (collision.gameObject.name == "Pineapple")
         {
+            shipAlive = false;
             //TODO: add delay to play success sound before resetting position
             //resetPosition();
             SoundManager.instance.PlaySFX(SoundEffect.Success);
@@ -178,4 +193,8 @@ public class ShipMovement : MonoBehaviour {
 
     }
 
+	public void revive()
+	{
+		shipAlive = true;
+	}
 }

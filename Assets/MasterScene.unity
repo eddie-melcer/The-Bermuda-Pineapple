@@ -157,25 +157,10 @@ Prefab:
       propertyPath: Target
       value: 
       objectReference: {fileID: 542124586}
-    - target: {fileID: 198711903628052168, guid: 359e1ee502753654aa34b11e5fd9c296,
+    - target: {fileID: 114833004605733890, guid: 359e1ee502753654aa34b11e5fd9c296,
         type: 2}
-      propertyPath: randomSeed
-      value: -300071225
-      objectReference: {fileID: 0}
-    - target: {fileID: 198711903628052168, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 198910522038518778, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1900736931
-      objectReference: {fileID: 0}
-    - target: {fileID: 198910522038518778, guid: 359e1ee502753654aa34b11e5fd9c296,
-        type: 2}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
+      propertyPath: Thrust
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
@@ -208,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &460879610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7357,7 +7342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0f76ee6a56e004da4b0e5fae0e0ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberMines: 7
+  NumberMines: 50
   MineThreshold: 10
   Mine: {fileID: 460879609}
   Ship: {fileID: 89287012}
@@ -7520,9 +7505,9 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 1988795a951b6b442bc7be5ce3a0d093, type: 3}
   sfxClips:
-  - {fileID: 8300000, guid: 20be2e1ba493944449b9bac1c4fb97f3, type: 3}
+  - {fileID: 8300000, guid: 576b4c2e28c7a984687d9379ae522a21, type: 3}
   - {fileID: 8300000, guid: 293ea245cf9b6bb4e914c19367f6fc66, type: 3}
-  - {fileID: 8300000, guid: 034a49d98a5b9cf47bcddd0c29c238e2, type: 3}
+  - {fileID: 8300000, guid: cfef1106f0818d24099f89103874d3dc, type: 3}
   - {fileID: 8300000, guid: 42351893b6f03b643918d8094a478dc7, type: 3}
   - {fileID: 8300000, guid: 4a3681e48382c03419e4839f800eadbb, type: 3}
   - {fileID: 8300000, guid: bcefa0dd5088c8342bf6c073e7450f3e, type: 3}
