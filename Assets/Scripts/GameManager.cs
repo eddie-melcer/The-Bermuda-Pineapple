@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public float stuffRadius = 4.5f;
     public ShipMovement shipMovement;
     public Camera WholeScene;
+	public float safeRadius = 30;
 
     // Use this for initialization
     void Start () {
@@ -84,7 +85,20 @@ public class GameManager : MonoBehaviour {
         {
             r.enabled = true;
         }
-        ship.transform.position = generateRandomCoords(stuffRadius);
+
+		GameObject[] Mines = GameObject.FindGameObjectsWithTag("Mine");
+		float minDistance = Vector3.Distance(ship.transform.position, Mines[0].transform.position);
+        float currentDistance = 0;
+        
+        while(minDistance < safeRadius) {
+            ship.transform.position = generateRandomCoords(stuffRadius);
+            for(int i = 0; i < Mines.Length; i++) {
+                currentDistance = Vector3.Distance(ship.transform.position, Mines[i].transform.position);
+                if(currentDistance < minDistance) minDistance = currentDistance;
+            }
+
+        }
+       
 		shipMovement.revive();
         //Destroy(collision.gameObject);
     }
