@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
         {
             r.enabled = false;
         }
-        Death.Play();
+        //Death.Play();
         yield return new WaitForSeconds(2.0f);
         foreach (MeshRenderer r in rendererArray)
         {
