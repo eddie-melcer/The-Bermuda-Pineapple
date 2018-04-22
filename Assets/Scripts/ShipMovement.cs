@@ -86,6 +86,7 @@ public class ShipMovement : MonoBehaviour {
         }
         else {
             rigidBody.velocity = Vector3.zero;
+            rigidBody.angularVelocity = Vector3.zero;
         }
         
 
