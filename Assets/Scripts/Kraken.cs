@@ -8,8 +8,9 @@ public class Kraken : MonoBehaviour {
 
     public float sinkSpeed = 10;
     public float sinkStart = 5;
+    public float rotationSpeed = 6;
 
-    protected float lifetime = -1;
+    public float lifetime = -1;
     private ShipMovement ship;
     private GameObject shipMesh;
 
@@ -24,12 +25,13 @@ public class Kraken : MonoBehaviour {
 	}
 
 	void Update () {
-        if (lifetime < -1)
+        if (lifetime < 0)
             return;
         lifetime += Time.deltaTime;
         if(lifetime >= sinkStart)
         {
-            shipMesh.transform.position = new Vector3(shipMesh.transform.position.x, shipMesh.transform.position.y - sinkSpeed * Time.deltaTime, shipMesh.transform.position.z);
+            shipMesh.transform.position = new Vector3(shipMesh.transform.position.x + sinkSpeed * Time.deltaTime * 0.3f, shipMesh.transform.position.y - sinkSpeed * Time.deltaTime, shipMesh.transform.position.z);
+            //shipMesh.transform.localRotation = Quaternion.Euler(new Vector3(0,0, (lifetime-sinkStart) * rotationSpeed));
         }
         if (lifetime > sinkStart+3)
             Destroy(this.gameObject);

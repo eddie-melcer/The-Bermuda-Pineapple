@@ -204,7 +204,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 576b4c2e28c7a984687d9379ae522a21, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1c8bf20b4e665542b1d36c441bc61d3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -377,8 +377,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tentacle: {fileID: 94431200}
-  sinkSpeed: 1
-  sinkStart: 5.7
+  sinkSpeed: 3
+  sinkStart: 5
+  lifetime: -1
 --- !u!1 &500619699
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +457,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1801416494
+  randomSeed: -1628776316
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4012,7 +4013,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -498232259
+  randomSeed: 886437457
   InitialModule:
     serializedVersion: 3
     enabled: 1

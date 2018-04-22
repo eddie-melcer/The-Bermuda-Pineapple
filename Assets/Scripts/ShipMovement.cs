@@ -176,6 +176,7 @@ public class ShipMovement : MonoBehaviour {
             collision.gameObject.transform.position = transform.position;// + transform.rotation * tentableOffset;
             collision.gameObject.GetComponent<Kraken>().tentacle.SetActive(true);
             recentMine = collision;
+            recentMine.gameObject.GetComponent<Kraken>().StartAnimation();
             manager.resetShip(this.gameObject,collision);
             //Destroy(collision.gameObject);
 
