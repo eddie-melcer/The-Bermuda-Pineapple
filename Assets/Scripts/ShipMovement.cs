@@ -7,19 +7,22 @@ public class ShipMovement : MonoBehaviour {
     public float Thrust;
     public int AngularVelocity;
     public GameObject Target;
-    public GameManager manager;
     public List<GameObject> Mines;
     public DistanceClass PreviousClass;
-    public AudioSource superDangerSource;
-    public AudioSource dangerSource;
-    public AudioSource warningSource;
-    public AudioSource slightWarningSource;
     public float SuperDangerThreshold = 1.0f;
     public float DangerThreshold = 2.0f;
     public float WarningThreshold = 3.0f;
     public float SlightWarningThreshold = 4.0f;
 	public float worldRadius = 5.0f;
     public float shipSpawnRadius = 4.0f;
+
+    public AudioSource superDangerSource { get; protected set; }
+    public AudioSource dangerSource { get; protected set; }
+    public AudioSource warningSource { get; protected set; }
+    public AudioSource slightWarningSource { get; protected set; }
+
+    protected GameManager manager;
+    protected Rigidbody rigidBody;
 
     // An enum for maintaining the different sound effects available
     public enum DistanceClass
@@ -32,9 +35,11 @@ public class ShipMovement : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Awake () {
+        manager = FindObjectOfType<GameManager>();
+        rigidBody = GetComponentInChildren<Rigidbody>();
+        print(rigidBody);
+    }
 
     void MoveShip()
     {
@@ -43,11 +48,12 @@ public class ShipMovement : MonoBehaviour {
         {
             if(!r.enabled)
             {
-              this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-              return;
+                rigidBody.velocity = Vector2.zero;
+                return;
             }
         }
-        this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * Thrust);
+        print(this.transform.forward +" "+ Thrust);
+        rigidBody.AddForce(this.transform.forward * Thrust);
     }
 
     // Update is called once per frame
@@ -57,8 +63,8 @@ public class ShipMovement : MonoBehaviour {
 
         if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
         {
-			//this.GetComponent<Rigidbody2D>().angularVelocity = -30 * Input.GetAxis("Horizontal");
-			float x_input = Input.GetAxis("Horizontal");
+            //rigidBody.angularVelocity = -30 * Input.GetAxis("Horizontal");
+            float x_input = Input.GetAxis("Horizontal");
 			float y_input = Input.GetAxis("Vertical");
 
 			int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
@@ -67,7 +73,7 @@ public class ShipMovement : MonoBehaviour {
         }
         else
         {
-            this.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            rigidBody.angularVelocity = Vector3.zero;
         }
 
         // Wrap Ship Around
