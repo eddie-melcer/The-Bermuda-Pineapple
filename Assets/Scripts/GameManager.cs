@@ -60,16 +60,8 @@ public class GameManager : MonoBehaviour {
         }
         Death.Play();
         yield return new WaitForSeconds(2.0f);
-<<<<<<< HEAD:Assets/GameManager.cs
         ship.GetComponentInChildren<MeshRenderer>().enabled = true;
         ship.transform.position = generateRandomCoords(stuffRadius);
-=======
-        foreach (MeshRenderer r in rendererArray)
-        {
-            r.enabled = true;
-        }
-        ship.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(-5f, 5f));
->>>>>>> a7a2ac859c1033eaae3f3770726141a5260ac80f:Assets/Scripts/GameManager.cs
     }
 
     void RandomMinePlacement(int number)
