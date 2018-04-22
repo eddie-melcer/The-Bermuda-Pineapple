@@ -3760,11 +3760,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Thrust: 0.5
-  AngularVelocity: 80
+  AngularVelocity: 120
   Target: {fileID: 891235359}
   manager: {fileID: 1697336180}
   Mines: []
   PreviousClass: 0
+  superDangerSource: {fileID: 0}
+  dangerSource: {fileID: 0}
+  warningSource: {fileID: 0}
+  slightWarningSource: {fileID: 0}
   SuperDangerThreshold: 1.5
   DangerThreshold: 2
   WarningThreshold: 3
@@ -7730,6 +7734,7 @@ MonoBehaviour:
   Death: {fileID: 1197773116}
   Win: {fileID: 448725849}
   stuffRadius: 4.5
+  shipMovement: {fileID: 741773162}
 --- !u!4 &1697336181
 Transform:
   m_ObjectHideFlags: 0
