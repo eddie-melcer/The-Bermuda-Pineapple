@@ -176,6 +176,7 @@ public class ShipMovement : MonoBehaviour {
         }
         else if (collision.gameObject.name == "Pineapple")
         {
+            shipAlive = false;
             //TODO: add delay to play success sound before resetting position
             //resetPosition();
             SoundManager.instance.PlaySFX(SoundEffect.Success);

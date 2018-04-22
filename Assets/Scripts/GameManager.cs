@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
             Destroy(OldMine);
         }
         RandomMinePlacement(NumberMines);
+		    shipMovement.revive();
     }
 
     public IEnumerator reset(GameObject ship)
