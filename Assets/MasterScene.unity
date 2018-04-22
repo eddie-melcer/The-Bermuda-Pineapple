@@ -338,6 +338,7 @@ AudioSource:
     - serializedVersion: 2
       time: 0
       value: 1
+<<<<<<< HEAD
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -376,6 +377,18 @@ Transform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262608965
+=======
+      objectReference: {fileID: 0}
+    - target: {fileID: 20150924117723740, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &89287012 stripped
+>>>>>>> 17ab007c7001221b0fd8c9ad78aea8f78bfabb6e
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1934078247287812, guid: 359e1ee502753654aa34b11e5fd9c296,
@@ -14695,6 +14708,7 @@ MonoBehaviour:
   Win: {fileID: 762830442}
   stuffRadius: 80
   shipMovement: {fileID: 89287013}
+  WholeScene: {fileID: 1989396380}
 --- !u!4 &1202780935
 Transform:
   m_ObjectHideFlags: 0
@@ -18270,6 +18284,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+<<<<<<< HEAD
 --- !u!1 &1990721234
 GameObject:
   m_ObjectHideFlags: 0
@@ -18301,6 +18316,13 @@ Transform:
   m_Father: {fileID: 387948139}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+--- !u!20 &1989396380 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20150924117723740, guid: 359e1ee502753654aa34b11e5fd9c296,
+    type: 2}
+  m_PrefabInternal: {fileID: 89287011}
+>>>>>>> 17ab007c7001221b0fd8c9ad78aea8f78bfabb6e
 --- !u!1 &2134911315
 GameObject:
   m_ObjectHideFlags: 0
