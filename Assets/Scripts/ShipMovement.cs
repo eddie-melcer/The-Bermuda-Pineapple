@@ -81,7 +81,7 @@ public class ShipMovement : MonoBehaviour {
 
         // Wrap Ship Around
         if((this.transform.position.x * this.transform.position.x + this.transform.position.z*this.transform.position.z) > worldRadius*worldRadius) {
-            this.transform.position = new Vector2(this.transform.position.x * -0.99f, this.transform.position.z * -0.99f);
+            this.transform.position = new Vector2(this.transform.position.x * -0.99f, 0, this.transform.position.z * -0.99f);
         }
 
         // Mine Sounds
