@@ -37,10 +37,7 @@ public class ShipMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // Handle User Input
-        if (this.GetComponentInChildren<MeshRenderer>().enabled)
-        {
-            this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * Thrust);
-        }
+        this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * Thrust);
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {

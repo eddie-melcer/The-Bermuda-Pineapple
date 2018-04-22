@@ -51,10 +51,17 @@ public class GameManager : MonoBehaviour {
     {
         
         Death.transform.position = new Vector2(ship.transform.position.x,ship.transform.position.y);
-        ship.GetComponentInChildren<MeshRenderer>().enabled = false; ;
+        Renderer[] rendererArray = ship.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer r in rendererArray)
+        {
+            r.enabled = false;
+        }
         Death.Play();
         yield return new WaitForSeconds(2.0f);
-        ship.GetComponentInChildren<MeshRenderer>().enabled = true;
+        foreach (MeshRenderer r in rendererArray)
+        {
+            r.enabled = true;
+        }
         ship.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(-5f, 5f));
     }
 
