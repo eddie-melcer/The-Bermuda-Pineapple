@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!124 &33667420
 Behaviour:
@@ -182,7 +182,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -269,6 +269,11 @@ Prefab:
     - target: {fileID: 4437888525327998, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
       propertyPath: m_LocalPosition.y
       value: 17.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 20150924117723740, guid: 359e1ee502753654aa34b11e5fd9c296,
+        type: 2}
+      propertyPath: m_TargetDisplay
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 359e1ee502753654aa34b11e5fd9c296, type: 2}
@@ -7327,6 +7332,11 @@ Prefab:
     - target: {fileID: 4559824265394860, guid: abdc46b26ff75e243b3158df323d174a, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23117253072855738, guid: abdc46b26ff75e243b3158df323d174a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abdc46b26ff75e243b3158df323d174a, type: 2}
