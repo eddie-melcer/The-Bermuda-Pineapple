@@ -60,7 +60,10 @@ public class GameManager : MonoBehaviour {
         }
         Death.Play();
         yield return new WaitForSeconds(2.0f);
-        ship.GetComponentInChildren<MeshRenderer>().enabled = true;
+        foreach (MeshRenderer r in rendererArray)
+        {
+            r.enabled = true;
+        }
         ship.transform.position = generateRandomCoords(stuffRadius);
     }
 
