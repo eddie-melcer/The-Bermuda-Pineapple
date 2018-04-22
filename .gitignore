@@ -1,0 +1,13 @@
+# Ignored unity files
+Library/
+Temp/
+UnityPackageManager/
+
+# Ignored IDE files
+*.csproj
+*.unityproj
+*.sln
+*.userprefs
+obj/
+
+.vs/
