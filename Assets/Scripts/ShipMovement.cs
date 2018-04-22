@@ -17,6 +17,8 @@ public class ShipMovement : MonoBehaviour {
     public float shipSpawnRadius = 4.0f;
     public bool  shipAlive;
     public Vector3 tentableOffset = new Vector3(2,0,0);
+    public Camera shipCam;
+    public Vector3 camOffset = new Vector3(0, -17f, -30f);
 
 
     public AudioSource superDangerSource { get; protected set; }
