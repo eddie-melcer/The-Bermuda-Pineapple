@@ -3740,7 +3740,6 @@ GameObject:
   - component: {fileID: 741773164}
   - component: {fileID: 741773162}
   - component: {fileID: 741773166}
-  - component: {fileID: 741773167}
   m_Layer: 0
   m_Name: SpacePirateShip
   m_TagString: Untagged
@@ -3858,13 +3857,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 4}
   m_Direction: 0
---- !u!81 &741773167
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 741773161}
-  m_Enabled: 1
 --- !u!1 &891235359
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,6 +7616,7 @@ GameObject:
   - component: {fileID: 1641765915}
   - component: {fileID: 1641765914}
   - component: {fileID: 1641765913}
+  - component: {fileID: 1641765917}
   m_Layer: 0
   m_Name: Ship Camera
   m_TagString: Untagged
@@ -7699,6 +7692,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1641765917
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641765912}
+  m_Enabled: 1
 --- !u!1 &1697336179
 GameObject:
   m_ObjectHideFlags: 0

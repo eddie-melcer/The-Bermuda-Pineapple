@@ -62,7 +62,6 @@ public class ShipMovement : MonoBehaviour {
 			float y_input = Input.GetAxis("Vertical");
 
 			int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
-			Debug.Log(y_input + ", " + x_input + ", " + heading);
 
 			this.transform.eulerAngles = new Vector3(0, 0, heading);
         }
@@ -122,6 +121,7 @@ public class ShipMovement : MonoBehaviour {
         {
             if(PreviousClass > CurrentClass)
             {
+                Debug.Log(closestMine.transform.x+","+closestMine.transform.y);
                 switch(CurrentClass)
                 {
                     case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0, closestMine); break;

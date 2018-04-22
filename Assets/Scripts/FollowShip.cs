@@ -8,10 +8,12 @@ public class FollowShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.transform.position = new Vector3(Ship.transform.position.x, Ship.transform.position.y, this.transform.position.z);
+    this.transform.rotation = Ship.transform.rotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         this.transform.position = new Vector3(Ship.transform.position.x, Ship.transform.position.y, this.transform.position.z);
+        this.transform.rotation = Ship.transform.rotation;
     }
 }
