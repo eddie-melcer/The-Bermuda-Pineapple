@@ -36,10 +36,24 @@ public class ShipMovement : MonoBehaviour {
 		
 	}
 
+    void MoveShip()
+    {
+        Renderer[] rendererArray = this.GetComponentsInChildren<MeshRenderer>();
+        foreach(MeshRenderer r in rendererArray)
+        {
+            if(!r.enabled)
+            {
+              this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+              return;
+            }
+        }
+        this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * Thrust);
+    }
+
     // Update is called once per frame
     void Update() {
         // Handle User Input
-        this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * Thrust);
+        MoveShip();
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -146,14 +160,10 @@ public class ShipMovement : MonoBehaviour {
     public void resetPosition()
     {
         // Target
-        Target.transform.position = generateRandomCoords(shipSpawnRadius);
+        Target.transform.position = manager.generateRandomCoords(shipSpawnRadius);
 
         // Mines
 
     }
 
-    public Vector2 generateRandomCoords(float radius) {
-        float x = Random.Range(-radius, radius);
-        return new Vector2(x, (float)Mathf.Sqrt(radius*radius - x*x));
-    }
 }
