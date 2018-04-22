@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
         if (shipMovement.dangerSource != null) SoundManager.instance.StopSFX(shipMovement.dangerSource);
         if (shipMovement.warningSource != null) SoundManager.instance.StopSFX(shipMovement.warningSource);
         if (shipMovement.slightWarningSource != null) SoundManager.instance.StopSFX(shipMovement.slightWarningSource);
-        Win.transform.position = new Vector2(pineapple.transform.position.x, pineapple.transform.position.y);
+        Win.transform.position = new Vector2(pineapple.transform.position.x, pineapple.transform.position.z);
         pineapple.SetActive(false);
         Win.Play();
         yield return new WaitForSeconds(2.0f);
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
         if (shipMovement.warningSource != null) SoundManager.instance.StopSFX(shipMovement.warningSource);
         if (shipMovement.slightWarningSource != null) SoundManager.instance.StopSFX(shipMovement.slightWarningSource);
    
-        Death.transform.position = new Vector2(ship.transform.position.x,ship.transform.position.y);
+        Death.transform.position = new Vector2(ship.transform.position.x,ship.transform.position.z);
         Renderer[] rendererArray = ship.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer r in rendererArray)
         {
@@ -82,26 +82,21 @@ public class GameManager : MonoBehaviour {
     {
         for(int i = 0; i < number; i++)
         {
-            Vector3 pos = generateRandomCoords3D(stuffRadius);
+            Vector3 pos = generateRandomCoords(stuffRadius);
             while(Vector3.Distance(pos, Pineapple.transform.position) < MineThreshold && Vector3.Distance(pos, Ship.transform.position) < MineThreshold)
             {
-                pos = generateRandomCoords3D(stuffRadius);
+                pos = generateRandomCoords(stuffRadius);
             }
 
             Instantiate(Mine, pos, Quaternion.identity).SetActive(true);
         }
     }
 
-    public Vector3 generateRandomCoords3D(float radius) {
-      Vector2 v2d = generateRandomCoords(radius);
-      return new Vector3(v2d.x,v2d.y,0);
-    }
-
-    public Vector2 generateRandomCoords(float radius) {
+    public Vector3 generateRandomCoords(float radius) {
         float x = Random.Range(-radius, radius);
-        float ydist = Mathf.Sqrt(radius*radius - x*x);
-        float y = Random.Range(-ydist,ydist);
-        return new Vector2(x,y);
+        float zDist = Mathf.Sqrt(radius * radius - x * x);
+        float z = Random.Range(-zDist, zDist);
+        return new Vector3(x, 0, z);
     }
 
 }
