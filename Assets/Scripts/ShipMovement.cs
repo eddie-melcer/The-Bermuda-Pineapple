@@ -121,7 +121,6 @@ public class ShipMovement : MonoBehaviour {
         {
             if(PreviousClass > CurrentClass)
             {
-                Debug.Log(closestMine.transform.position.x+","+closestMine.transform.position.y);
                 switch(CurrentClass)
                 {
                     case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0, closestMine); break;
