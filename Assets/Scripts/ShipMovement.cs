@@ -41,14 +41,14 @@ public class ShipMovement : MonoBehaviour {
         // Handle User Input
         this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * Thrust);
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            this.GetComponent<Rigidbody2D>().angularVelocity = AngularVelocity;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            this.GetComponent<Rigidbody2D>().angularVelocity = -AngularVelocity;
-        }
+        if(Input.GetAxis("Horizontal") != 0)
+		{
+			this.GetComponent<Rigidbody2D>().angularVelocity = Input.GetAxis("Horizontal") * -30;
+		}
+		else if(Input.GetAxis("4") != 0)
+		{
+			this.GetComponent<Rigidbody2D>().angularVelocity = Input.GetAxis("4") * -30;
+		}
         else
         {
             this.GetComponent<Rigidbody2D>().angularVelocity = 0;
