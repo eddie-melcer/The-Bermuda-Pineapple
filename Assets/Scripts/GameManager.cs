@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public int NumberMines = 4;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour {
         Win.transform.position = new Vector3(pineapple.transform.position.x, 0.0f,pineapple.transform.position.z);
         pineapple.SetActive(false);
         Win.Play();
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.5f);
         pineapple.SetActive(true);
         pineapple.transform.position = generateRandomCoords(stuffRadius) + new Vector3(0, 1.5f, 0);
         GameObject[] OldMines = GameObject.FindGameObjectsWithTag("Mine");
@@ -53,7 +54,8 @@ public class GameManager : MonoBehaviour {
             Destroy(OldMine);
         }
         RandomMinePlacement(NumberMines);
-		    shipMovement.revive();
+        //shipMovement.revive();
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
 
     public IEnumerator reset(GameObject ship,Collision collision)
