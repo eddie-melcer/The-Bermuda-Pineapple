@@ -245,6 +245,7 @@
     <Compile Include="Assets\Scripts\Kraken.cs" />
     <Compile Include="Assets\Scripts\ShipMovement.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\SpaceShader.shader" />
