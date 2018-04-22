@@ -55,9 +55,16 @@ public class ShipMovement : MonoBehaviour {
         // Handle User Input
         MoveShip();
 
-        if (Input.GetAxis("Horizontal") != 0)
+        if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
         {
-            this.GetComponent<Rigidbody2D>().angularVelocity = -30 * Input.GetAxis("Horizontal");
+			//this.GetComponent<Rigidbody2D>().angularVelocity = -30 * Input.GetAxis("Horizontal");
+			float x_input = Input.GetAxis("Horizontal");
+			float y_input = Input.GetAxis("Vertical");
+
+			int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
+			Debug.Log(y_input + ", " + x_input + ", " + heading);
+
+			this.transform.eulerAngles = new Vector3(0, 0, heading);
         }
         else
         {
