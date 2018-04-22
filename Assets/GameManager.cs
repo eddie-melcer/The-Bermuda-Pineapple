@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour {
     public GameObject Pineapple;
     public ParticleSystem Death;
     public ParticleSystem Win;
+    public float stuffRadius = 4.5f;
 
     // Use this for initialization
     void Start () {
+        Pineapple.transform.position = generateRandomCoords(stuffRadius);
         RandomMinePlacement(NumberMines);
 	}
 	
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour {
         Win.Play();
         yield return new WaitForSeconds(2.0f);
         pineapple.SetActive(true);
-        pineapple.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(-5f, 5f));
+        pineapple.transform.position = generateRandomCoords(stuffRadius);
         GameObject[] OldMines = GameObject.FindGameObjectsWithTag("Mine");
         foreach(GameObject OldMine in OldMines)
         {
@@ -55,20 +57,30 @@ public class GameManager : MonoBehaviour {
         Death.Play();
         yield return new WaitForSeconds(2.0f);
         ship.GetComponentInChildren<MeshRenderer>().enabled = true;
-        ship.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(-5f, 5f));
+        ship.transform.position = generateRandomCoords(stuffRadius);
     }
 
     void RandomMinePlacement(int number)
     {
         for(int i = 0; i < number; i++)
         {
-            Vector3 pos = new Vector3(Random.Range(-9f, 9f), Random.Range(-5f, 5f), 0);
+            Vector3 pos = generateRandomCoords3D(stuffRadius);
             while(Vector3.Distance(pos, Pineapple.transform.position) < MineThreshold && Vector3.Distance(pos, Ship.transform.position) < MineThreshold)
             {
-                pos = new Vector3(Random.Range(-9f, 9f), Random.Range(-5f, 5f), 0);
+                pos = generateRandomCoords3D(stuffRadius);
             }
 
             Instantiate(Mine, pos, Quaternion.identity).SetActive(true);
         }
+    }
+
+    public Vector2 generateRandomCoords(float radius) {
+        float x = Random.Range(-radius, radius);
+        return new Vector2(x, (float)Mathf.Sqrt(radius*radius - x*x));
+    }
+
+    public Vector3 generateRandomCoords3D(float radius) {
+        float x = Random.Range(-radius, radius);
+        return new Vector3(x, (float)Mathf.Sqrt(radius*radius - x*x), 0);
     }
 }

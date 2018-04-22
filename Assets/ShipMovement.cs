@@ -18,6 +18,8 @@ public class ShipMovement : MonoBehaviour {
     public float DangerThreshold = 2.0f;
     public float WarningThreshold = 3.0f;
     public float SlightWarningThreshold = 4.0f;
+    public float worldRadius = 5.0f;
+    public float shipSpawnRadius = 4.0f;
 
     // An enum for maintaining the different sound effects available
     public enum DistanceClass
@@ -56,21 +58,8 @@ public class ShipMovement : MonoBehaviour {
         }
 
         // Wrap Ship Around
-        if (this.transform.position.x > 9.4f)
-        {
-            this.transform.position = new Vector2(-9.3f, this.transform.position.y);
-        }
-        if (this.transform.position.x < -9.4f)
-        {
-            this.transform.position = new Vector2(9.3f, this.transform.position.y);
-        }
-        if (this.transform.position.y > 5.5f)
-        {
-            this.transform.position = new Vector2(this.transform.position.x, -5.4f);
-        }
-        if (this.transform.position.y < -5.5f)
-        {
-            this.transform.position = new Vector2(this.transform.position.x, 5.4f);
+        if((this.transform.position.x * this.transform.position.x + this.transform.position.y*this.transform.position.y) > worldRadius*worldRadius) {
+            this.transform.position = new Vector2(this.transform.position.x * -0.99f, this.transform.position.y * -0.99f);
         }
 
         // Mine Sounds
@@ -159,9 +148,14 @@ public class ShipMovement : MonoBehaviour {
     public void resetPosition()
     {
         // Target
-        Target.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(-5f, 5f));
+        Target.transform.position = generateRandomCoords(shipSpawnRadius);
 
         // Mines
 
+    }
+
+    public Vector2 generateRandomCoords(float radius) {
+        float x = Random.Range(-radius, radius);
+        return new Vector2(x, (float)Mathf.Sqrt(radius*radius - x*x));
     }
 }
