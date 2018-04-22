@@ -167,9 +167,9 @@ public class ShipMovement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.GetComponent<BoxCollider>().enabled = false;
         if (collision.gameObject.tag == "Mine")
         {
+            collision.gameObject.GetComponent<BoxCollider>().enabled = false;
             shipAlive = false;
             //SoundManager.instance.PlaySFX(SoundEffect.Death);
             collision.gameObject.transform.rotation = transform.rotation;
