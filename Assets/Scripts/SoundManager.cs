@@ -144,7 +144,7 @@ public class SoundManager : MonoBehaviour
             for (int i = sfxSources.Count - 1; i >= 0; i--)
             {
                 AudioSourceManager sfx = (AudioSourceManager)sfxSources[i];
-                if (!sfx.source.isPlaying)
+                if (sfx.source != null && !sfx.source.isPlaying)
                 {
                     sfxSources.Remove(sfx);
                     sfx.Destroy();
@@ -188,10 +188,21 @@ public class SoundManager : MonoBehaviour
     }
 
     // Dynamically creates a new AudioSource with specified clip, volume, and panning.
-    public AudioSource createAudioSource(AudioClip clip, float volume, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, Vector3 position = new Vector3())
+    public AudioSource createAudioSource(AudioClip clip, float volume, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, GameObject target = null)
     {
         // Create a new AudioSource to play the clip on.
-        AudioSource audio = gameObject.AddComponent<AudioSource>();
+        // Spatial blend is 0, meaning 2D.
+        AudioSource audio;
+        if (target == null)
+        {
+            audio = gameObject.AddComponent<AudioSource>();
+            audio.spatialBlend = 0;
+        }
+        else
+        {
+            audio = target.AddComponent<AudioSource>();
+            audio.spatialBlend = 1;
+        }
 
         // Set the clip of our AudioSource to the clip passed in as a parameter.
         audio.clip = clip;
@@ -208,18 +219,6 @@ public class SoundManager : MonoBehaviour
         // Are we panning the sound?
         audio.panStereo = pan;
 
-        // Spatial blend is 0, meaning 2D.
-        // Can add this as a global setting but probably a bad idea for now since 3D spatial sounds require setting positions and other data to work properly.
-        if (position == Vector3.zero)
-        {
-            audio.spatialBlend = 0;
-        }
-        else
-        {
-            audio.spatialBlend = 1;
-        }
-        audio.transform.position = position;
-
         // Add sfx to arraylist.
         sfxSources.Add(new AudioSourceManager(audio, soundEventCallback));
 
@@ -228,16 +227,16 @@ public class SoundManager : MonoBehaviour
     }
 
     // Used to play single sound clips.
-    public AudioSource PlaySFX(SoundEffect sfx, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, Vector3 position = new Vector3())
+    public AudioSource PlaySFX(SoundEffect sfx, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, GameObject target = null)
     {
-        return PlaySFX(sfxClips[(int)sfx], loop, positionOffset, soundEventCallback, pan, delay, position);
+        return PlaySFX(sfxClips[(int)sfx], loop, positionOffset, soundEventCallback, pan, delay, target);
     }
     
     // Used to play single sound clips.
-    public AudioSource PlaySFX(AudioClip clip, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, Vector3 position = new Vector3())
+    public AudioSource PlaySFX(AudioClip clip, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, GameObject target = null)
     {
         // Create a new sfx.
-        AudioSource sfx = createAudioSource(clip, sfxVolume, loop, positionOffset, soundEventCallback, pan, position);
+        AudioSource sfx = createAudioSource(clip, sfxVolume, loop, positionOffset, soundEventCallback, pan, target);
 
         // Play the clip if we are in sfx playing or stopped state.
         // Change sfx state to playing if it was stopped before 

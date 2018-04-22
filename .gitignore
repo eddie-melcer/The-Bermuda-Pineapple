@@ -10,4 +10,10 @@ UnityPackageManager/
 *.userprefs
 obj/
 
+# ignore vim intermediate files
+.DS_Store
+
+#ignore stuff on mac
+*.swp
+
 .vs/
