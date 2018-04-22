@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public ParticleSystem Death;
     public ParticleSystem Win;
     public float stuffRadius = 4.5f;
+    public ShipMovement shipMovement;
 
     // Use this for initialization
     void Start () {
@@ -35,6 +36,11 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator WinResetHelper(GameObject ship, GameObject pineapple)
     {
+        // stop playing everything
+        if (shipMovement.superDangerSource != null) SoundManager.instance.StopSFX(shipMovement.superDangerSource);
+        if (shipMovement.dangerSource != null) SoundManager.instance.StopSFX(shipMovement.dangerSource);
+        if (shipMovement.warningSource != null) SoundManager.instance.StopSFX(shipMovement.warningSource);
+        if (shipMovement.slightWarningSource != null) SoundManager.instance.StopSFX(shipMovement.slightWarningSource);
         Win.transform.position = new Vector2(pineapple.transform.position.x, pineapple.transform.position.y);
         pineapple.SetActive(false);
         Win.Play();
@@ -51,7 +57,12 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator reset(GameObject ship)
     {
-        
+        // stop playing everything
+        if (shipMovement.superDangerSource != null) SoundManager.instance.StopSFX(shipMovement.superDangerSource);
+        if (shipMovement.dangerSource != null) SoundManager.instance.StopSFX(shipMovement.dangerSource);
+        if (shipMovement.warningSource != null) SoundManager.instance.StopSFX(shipMovement.warningSource);
+        if (shipMovement.slightWarningSource != null) SoundManager.instance.StopSFX(shipMovement.slightWarningSource);
+   
         Death.transform.position = new Vector2(ship.transform.position.x,ship.transform.position.y);
         Renderer[] rendererArray = ship.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer r in rendererArray)
@@ -81,18 +92,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-/*
-    public Vector2 generateRandomCoords(float radius) {
-        float x = Random.Range(-radius, radius);
-        return new Vector2(x, (float)Mathf.Sqrt(radius*radius - x*x));
-    }
-
-    public Vector3 generateRandomCoords3D(float radius) {
-        float x = Random.Range(-radius, radius);
-        return new Vector3(x, (float)Mathf.Sqrt(radius*radius - x*x), 0);
-    }
-*/
-
     public Vector3 generateRandomCoords3D(float radius) {
       Vector2 v2d = generateRandomCoords(radius);
       return new Vector3(v2d.x,v2d.y,0);
@@ -102,7 +101,6 @@ public class GameManager : MonoBehaviour {
         float x = Random.Range(-radius, radius);
         float ydist = Mathf.Sqrt(radius*radius - x*x);
         float y = Random.Range(-ydist,ydist);
-        Debug.Log(x+","+y);
         return new Vector2(x,y);
     }
 

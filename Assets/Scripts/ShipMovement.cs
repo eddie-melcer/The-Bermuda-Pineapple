@@ -10,10 +10,10 @@ public class ShipMovement : MonoBehaviour {
     public GameManager manager;
     public List<GameObject> Mines;
     public DistanceClass PreviousClass;
-    private AudioSource superDangerSource;
-    private AudioSource dangerSource;
-    private AudioSource warningSource;
-    private AudioSource slightWarningSource;
+    public AudioSource superDangerSource;
+    public AudioSource dangerSource;
+    public AudioSource warningSource;
+    public AudioSource slightWarningSource;
     public float SuperDangerThreshold = 1.0f;
     public float DangerThreshold = 2.0f;
     public float WarningThreshold = 3.0f;
