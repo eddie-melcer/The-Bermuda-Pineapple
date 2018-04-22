@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public int NumberMines = 4;
-    public float MineThreshold = 2;
+    public float MineThreshold = 30;
     public GameObject Mine;
     public GameObject Ship;
     public GameObject Pineapple;
