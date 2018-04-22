@@ -188,7 +188,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // Dynamically creates a new AudioSource with specified clip, volume, and panning.
-    public AudioSource createAudioSource(AudioClip clip, float volume, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, GameObject target = null)
+    public AudioSource createAudioSource(AudioClip clip, float volume, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, GameObject target = null, float vol = 1)
     {
         // Create a new AudioSource to play the clip on.
         // Spatial blend is 0, meaning 2D.
@@ -209,7 +209,7 @@ public class SoundManager : MonoBehaviour
         audio.clip = clip;
 
         // Set the volume of the sound.
-        audio.volume = volume;
+        audio.volume = volume * vol;
 
         // Is the sound going to loop indefinitely.
         audio.loop = loop;
@@ -228,16 +228,16 @@ public class SoundManager : MonoBehaviour
     }
 
     // Used to play single sound clips.
-    public AudioSource PlaySFX(SoundEffect sfx, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, GameObject target = null)
+    public AudioSource PlaySFX(SoundEffect sfx, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, GameObject target = null, float vol = 1)
     {
-        return PlaySFX(sfxClips[(int)sfx], loop, positionOffset, soundEventCallback, pan, delay, target);
+        return PlaySFX(sfxClips[(int)sfx], loop, positionOffset, soundEventCallback, pan, delay, target, vol);
     }
     
     // Used to play single sound clips.
-    public AudioSource PlaySFX(AudioClip clip, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, GameObject target = null)
+    public AudioSource PlaySFX(AudioClip clip, bool loop = false, float positionOffset = 0, AudioSourceManager.SoundEventCallback soundEventCallback = null, float pan = 0, ulong delay = 0, GameObject target = null, float vol = 1)
     {
         // Create a new sfx.
-        AudioSource sfx = createAudioSource(clip, sfxVolume, loop, positionOffset, soundEventCallback, pan, target);
+        AudioSource sfx = createAudioSource(clip, sfxVolume, loop, positionOffset, soundEventCallback, pan, target, vol);
 
         // Play the clip if we are in sfx playing or stopped state.
         // Change sfx state to playing if it was stopped before 
