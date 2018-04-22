@@ -4,6 +4,9 @@ Temp/
 UnityPackageManager/
 
 # Ignored IDE files
+*.csproj
+*.unityproj
+*.sln
 *.userprefs
 obj/
 
