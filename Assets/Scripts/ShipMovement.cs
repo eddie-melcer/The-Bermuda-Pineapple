@@ -171,6 +171,7 @@ public class ShipMovement : MonoBehaviour {
             Destroy(collision.gameObject);
             SoundManager.instance.PlaySFX(SoundEffect.Death);
             manager.resetShip(this.gameObject);
+
         }
         else if (collision.gameObject.name == "Pineapple")
         {
@@ -190,4 +191,8 @@ public class ShipMovement : MonoBehaviour {
 
     }
 
+	public void revive()
+	{
+		shipAlive = true;
+	}
 }

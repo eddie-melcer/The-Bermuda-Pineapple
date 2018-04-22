@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour {
             r.enabled = true;
         }
         ship.transform.position = generateRandomCoords(stuffRadius);
+		shipMovement.revive();
     }
 
     void RandomMinePlacement(int number)
