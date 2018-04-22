@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
         if (shipMovement.dangerSource != null) SoundManager.instance.StopSFX(shipMovement.dangerSource);
         if (shipMovement.warningSource != null) SoundManager.instance.StopSFX(shipMovement.warningSource);
         if (shipMovement.slightWarningSource != null) SoundManager.instance.StopSFX(shipMovement.slightWarningSource);
-        Win.transform.position = new Vector2(pineapple.transform.position.x, pineapple.transform.position.z);
+        Win.transform.position = new Vector3(pineapple.transform.position.x, 0.0f,pineapple.transform.position.z);
         pineapple.SetActive(false);
         Win.Play();
         yield return new WaitForSeconds(2.0f);
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
         if (shipMovement.warningSource != null) SoundManager.instance.StopSFX(shipMovement.warningSource);
         if (shipMovement.slightWarningSource != null) SoundManager.instance.StopSFX(shipMovement.slightWarningSource);
    
-        Death.transform.position = new Vector2(ship.transform.position.x,ship.transform.position.z);
+        Death.transform.position = new Vector3(ship.transform.position.x,0.0f,ship.transform.position.z);
         Renderer[] rendererArray = ship.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer r in rendererArray)
         {
