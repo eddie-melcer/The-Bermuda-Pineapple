@@ -55,6 +55,7 @@ public class ShipMovement : MonoBehaviour {
         // Handle User Input
         MoveShip();
 
+/*
         if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
         {
 			//this.GetComponent<Rigidbody2D>().angularVelocity = -30 * Input.GetAxis("Horizontal");
@@ -64,6 +65,11 @@ public class ShipMovement : MonoBehaviour {
 			int heading = (int) (Mathf.Atan2(y_input , x_input) * 180 / Mathf.PI) - 90;
 
 			this.transform.eulerAngles = new Vector3(0, 0, heading);
+        }
+*/
+        if(Input.GetAxis("Horizontal") != 0)
+        {
+            this.GetComponent<Rigidbody2D>().angularVelocity = -30 * Input.GetAxis("Horizontal");
         }
         else
         {
@@ -88,6 +94,7 @@ public class ShipMovement : MonoBehaviour {
                 if (Vector3.Distance(this.transform.position, Mines[i].transform.position) < mindist)
                 {
                     mindist = Vector3.Distance(this.transform.position, Mines[i].transform.position);
+                    closestMine = Mines[i];
                 }
             }
 
@@ -121,7 +128,6 @@ public class ShipMovement : MonoBehaviour {
         {
             if(PreviousClass > CurrentClass)
             {
-                Debug.Log(closestMine.transform.x+","+closestMine.transform.y);
                 switch(CurrentClass)
                 {
                     case DistanceClass.SuperDanger: superDangerSource = SoundManager.instance.PlaySFX(SoundEffect.Warning4, true, 0, null, 0, 0, closestMine); break;
