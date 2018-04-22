@@ -18,7 +18,6 @@ public class ShipMovement : MonoBehaviour {
     public float DangerThreshold = 2.0f;
     public float WarningThreshold = 3.0f;
     public float SlightWarningThreshold = 4.0f;
-
 	public float worldRadius = 5.0f;
     public float shipSpawnRadius = 4.0f;
 
@@ -56,8 +55,7 @@ public class ShipMovement : MonoBehaviour {
         }
 
         // Wrap Ship Around
->>>>>>> 8f478c6511ebce5b4ecfde6fce168fd7e66a7ef8
-		if ((this.transform.position.x * this.transform.position.x + this.transform.position.y*this.transform.position.y) > worldRadius*worldRadius) {
+        if((this.transform.position.x * this.transform.position.x + this.transform.position.y*this.transform.position.y) > worldRadius*worldRadius) {
             this.transform.position = new Vector2(this.transform.position.x * -0.99f, this.transform.position.y * -0.99f);
         }
 
